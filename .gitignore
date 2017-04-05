@@ -1,0 +1,5 @@
+/composer.lock
+/phpunit.xml
+/vendor
+/app/template_cache
+.idea/

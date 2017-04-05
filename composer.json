@@ -1,0 +1,28 @@
+{
+    "name": "lore/neptr",
+    "description": "Not sure yet",
+    "authors": [
+        {
+            "name": "Lore Sjoberg",
+            "email": "loresjoberg@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": {
+            "Lore\\Neptr": "app/"
+        }
+    },
+    "require": {
+        "php": ">=5.3.0",
+        "monolog/monolog": "^1.22",
+        "phpunit/phpunit": "^6.0",
+        "twig/twig": "^2.3",
+        "ramsey/uuid": "^3.6",
+        "mockery/mockery": "^0.9.9"
+    },
+    "require-dev": {
+        "phpunit/dbunit": "^3.0",
+        "phpunit/php-invoker": "^1.1"
+    }
+}
