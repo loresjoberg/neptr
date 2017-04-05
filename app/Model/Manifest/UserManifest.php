@@ -5,22 +5,40 @@ namespace Lore\Neptr\Model\Manifest;
 
 
 use Lore\Neptr\Model\DataType\Person\PersonalInfo;
-use Lore\Neptr\Model\DataType\Person\AccessInfo;
+use Lore\Neptr\Model\DataType\Person\Access;
 
+/**
+ * Class UserManifest
+ * @package Lore\Neptr\Model\Manifest
+ */
 class UserManifest
 {
+    /**
+     * @var PersonalInfo
+     */
     private $personalInfo;
-    private $systemInfo;
+    /**
+     * @var Access
+     */
+    private $access;
 
-    public function __construct(PersonalInfo $personalInfo, AccessInfo $systemInfo)
+    /**
+     * UserManifest constructor.
+     * @param PersonalInfo $personalInfo
+     * @param Access $systemInfo
+     */
+    public function __construct(PersonalInfo $personalInfo, Access $access)
     {
         $this->personalInfo = $personalInfo;
-        $this->systemInfo = $systemInfo;
+        $this->access = $access;
     }
 
+    /**
+     * @return array
+     */
     public function flatten() : array
     {
-        return $this->personalInfo->flatten() + $this->systemInfo->flatten();
+        return $this->personalInfo->flatten() + $this->access->flatten();
     }
 
 }

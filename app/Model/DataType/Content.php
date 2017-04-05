@@ -24,10 +24,4 @@ class Content
         $this->body = $body;
     }
 
-
-//    public function load($content) {
-//        $this->title = $content->title;
-//        $this->body = $content->body;
-//    }
-
 }

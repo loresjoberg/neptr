@@ -4,7 +4,9 @@
 namespace Lore\Neptr\Model\DataType;
 
 
+use DateTime;
 use Lore\Neptr\Model\Core\ObjectFlattener;
+use Lore\Neptr\Model\Entity\User;
 
 class PublicationData
 {
@@ -13,16 +15,10 @@ class PublicationData
     private $creator;
     private $creationDate;
 
-//    public function __construct($creator, $publicationDate)
-    public function __construct($creator, $publicationDate)
+    public function __construct(User $creator, DateTime $publicationDate)
     {
         $this->creator = $creator;
         $this->creationDate = $publicationDate;
     }
-
-//    public function load(StdClass $rawData) {
-//        $this->creator = $rawData->author;
-//        $this->creationDate = $rawData->publication_date;
-//    }
 
 }

@@ -4,18 +4,18 @@
 namespace Lore\Neptr\Model\Wrangler;
 
 
-use Lore\Neptr\Model\Curator\PostCurator;
+use Lore\Neptr\Model\Curator\UserCurator;
 use Lore\Neptr\Model\Manifest\UserManifest;
 
 class UserWrangler
 {
     /**
-     * @var PostCurator
+     * @var UserCurator
      */
     private $curator;
     private $id;
 
-    public function __construct(PostCurator $curator)
+    public function __construct(UserCurator $curator)
     {
         $this->curator = $curator;
     }

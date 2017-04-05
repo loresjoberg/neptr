@@ -23,8 +23,5 @@ class Post
         $this->manifest = $manifest;
     }
 
-    public function load($postId) : void
-    {
-        $this->wrangler->loadById($this->manifest, $postId);
-    }
+
 }

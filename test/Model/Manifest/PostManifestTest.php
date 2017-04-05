@@ -6,6 +6,13 @@ use PHPUnit\Framework\TestCase;
 
 class PostManifestTest extends TestCase
 {
+
+    public function tearDown()
+    {
+        Mockery::close();
+        parent::tearDown();
+    }
+
     public function testLoadPassesObjectToProperties() {
         $fakeData = new stdClass();
         $fakeData->id = 1;

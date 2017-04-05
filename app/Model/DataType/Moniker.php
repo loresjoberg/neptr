@@ -3,13 +3,16 @@
 
 namespace Lore\Neptr\Model\DataType;
 
+use Lore\Neptr\Model\Core\Validator;
+
 
 /**
  * Class Moniker
  *
  * For the purposes of this app, a "moniker" is a human-readable name for something or someone,
- * unique within its domain, rendered with a limited set of characters. For example, a person's
- * username may be a Moniker.
+ * rendered using only lowercase letters, digits, and hyphens, and which starts with a letter or number.
+ * Monikers are expected to be unique in their domain (although this class doesn't test for that)
+ * and are used to uniquely identify posts, users, etc. in a human-friendly way.
  *
  * @package Lore\Neptr\Model\DataType
  */
@@ -20,15 +23,23 @@ class Moniker
      */
     private $moniker;
 
-    /**
-     * Moniker constructor.
-     * @param string $moniker
-     */
 
     public function __construct($moniker)
     {
-        $this->moniker = $moniker;
+        if (!$this->validateMoniker($moniker)) {
+            throw new \Exception('Invalid Moniker.');
+        }
+        $this->moniker = (string) $moniker;
+
     }
 
+    private function validateMoniker($moniker) {
+
+        if (!Validator::isSimpleStringish($moniker)) {
+            return false;
+        }
+
+        return preg_match('/^[0-9a-z][0-9a-z-]*$/',$moniker);
+    }
 
 }

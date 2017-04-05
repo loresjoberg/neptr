@@ -34,9 +34,5 @@ class Metadata
         $this->publicationData = $publicationData;
     }
 
-//    public function load(StdClass $rawRow) {
-//        $this->identifiers->load($rawRow);
-//        $this->publicationData->load($rawRow);
-//    }
 
 }

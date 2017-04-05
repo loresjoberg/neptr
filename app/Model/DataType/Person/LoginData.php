@@ -13,4 +13,17 @@ class LoginData
 
     /** @var  Password */
     private $password;
+
+    /**
+     * LoginData constructor.
+     * @param Moniker $username
+     * @param Password $password
+     */
+    public function __construct(Moniker $username, Password $password)
+    {
+        $this->username = $username;
+        $this->password = $password;
+    }
+
+
 }
