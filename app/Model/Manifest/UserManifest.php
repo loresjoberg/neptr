@@ -11,7 +11,7 @@ use Lore\Neptr\Model\DataType\Person\Access;
  * Class UserManifest
  * @package Lore\Neptr\Model\Manifest
  */
-class UserManifest
+class UserManifest extends Manifest
 {
     /**
      * @var PersonalInfo

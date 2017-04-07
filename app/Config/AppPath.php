@@ -17,4 +17,8 @@ class AppPath
     {
         return $this->appRootPath . '/templates';
     }
+
+    public function classPath() : string {
+        return $this->appRootPath;
+    }
 }

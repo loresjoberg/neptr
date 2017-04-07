@@ -6,24 +6,8 @@ namespace Lore\Neptr\Model\Wrangler;
 use Lore\Neptr\Model\Curator\PostCurator;
 use ReflectionClass;
 
-class PostWrangler
+class PostWrangler extends Wrangler
 {
-    /**
-     * @var PostCurator
-     */
-    private $curator;
-    private $rawData;
-
-    public function __construct(PostCurator $curator, int $postId = null)
-    {
-        $this->curator = $curator;
-        $this->loadById($postId);
-    }
-
-    private function loadById(int $postId): void
-    {
-        $this->rawData = $this->curator->loadById($postId);
-    }
 
     public function assemble($className, $classMap)
     {

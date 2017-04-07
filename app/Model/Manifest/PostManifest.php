@@ -12,9 +12,8 @@ use stdClass;
  * Class PostManifest
  * @package Lore\Neptr\Model\Manifest
  */
-class PostManifest
+class PostManifest extends Manifest
 {
-    use ObjectFlattener;
 
     /**
      * @var Content

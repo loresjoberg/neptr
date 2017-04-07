@@ -6,15 +6,10 @@ use Exception;
 use PDO;
 use stdClass;
 
-class PostCurator
+class PostCurator implements Curator
 {
-    private $db;
 
-    public function __construct(PDO $db) {
-        $this->db = $db;
-    }
-
-    public function loadById($postId) : stdClass
+    public function exhume() : array
     {
         $query = $this->db->prepare('SELECT * FROM posts WHERE id = ?');
         $query->execute([$postId]);
