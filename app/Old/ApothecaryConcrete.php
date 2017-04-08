@@ -4,7 +4,15 @@ namespace Lore\Neptr\Model\DataType\Apothecary;
 
 use Lore\Neptr\Model\Formulary\Formulary;
 
-class Apothecary
+/**
+ * Class ApothecaryConcrete
+ *
+ * Responsibility: Instantiate first-order objects with data from
+ * a Reliquary according to the instructions in a Formulary.
+ *
+ * @package Lore\Neptr\Model\DataType\ApothecaryConcrete
+ */
+class ApothecaryConcrete
 {
 
     private $concoction;
@@ -12,10 +20,10 @@ class Apothecary
     public function concoct(Reliquary $reliquary, Formulary $formulary) : object
     {
         foreach ($formulary as $vessel => $formula) {
-            $this->concoction = $this->devise($reliquary, $vessel, $formula);
+            $this->concoction[] = $this->devise($reliquary, $vessel, $formula);
         }
 
-        return $this->concoction;
+        return new Concoction($this->concoction);
     }
 
     private function devise(Reliquary $reliquary, Vessel $vessel, Formula $formula) : object

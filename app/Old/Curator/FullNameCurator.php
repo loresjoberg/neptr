@@ -20,7 +20,7 @@ class FullNameCurator implements Curator
     }
 
 
-    public function exhume(): Reliquary
+    public function exhume($identifier): Reliquary
     {
         // TODO: Implement exhume() method.
     }

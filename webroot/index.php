@@ -5,7 +5,7 @@ use Lore\Neptr\Model\Core\ClassFinder;
 use Lore\Neptr\Model\Core\DataMap;
 use Lore\Neptr\Model\Core\EntityFactory;
 use Lore\Neptr\Model\Curator\UserCurator;
-use Lore\Neptr\Model\DataType\Apothecary\Apothecary;
+use Lore\Neptr\Model\DataType\Apothecary\ApothecaryConcrete;
 use Lore\Neptr\Model\DataType\Apothecary\Formula;
 use Lore\Neptr\Model\DataType\Apothecary\Vessel;
 use Lore\Neptr\Model\DataType\Apothecary\Reliquary;
@@ -33,7 +33,7 @@ $formula = new Formula(
 
 $vessel = new Vessel($classFinder->fullClassName('SimpleName'));
 
-$apothecary = new Apothecary($vessel, $reliquary);
+$apothecary = new ApothecaryConcrete($vessel, $reliquary);
 
 $simpleName = $apothecary->concoct($formula);
 

@@ -8,7 +8,14 @@ use Lore\Neptr\Model\Core\ObjectFlattener;
 use Lore\Neptr\Model\Manifest\Manifest;
 use Lore\Neptr\Model\Wrangler\Wrangler;
 
-class Entity
+/**
+ * Class EntityOld
+ *
+ * Responsibility: To execute business logic
+ *
+ * @package Lore\Neptr\Model\EntityOld
+ */
+class EntityOld
 {
     use ObjectFlattener;
 

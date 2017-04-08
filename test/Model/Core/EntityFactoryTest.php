@@ -12,6 +12,6 @@
 //        $db = new \PDO('mysql:dbname=neptr_test;host=localhost', 'neptr', 'neptr');
 //        $factory = new EntityFactory($db, $map);
 //        $post = $factory->assemblePost(1);
-//        $this->assertEquals('Lore\Neptr\Model\Entity\Post', get_class($post));
+//        $this->assertEquals('Lore\Neptr\Model\EntityOld\Post', get_class($post));
 //    }
 //}
