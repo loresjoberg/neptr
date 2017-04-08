@@ -3,14 +3,19 @@
 
 namespace Lore\Neptr\Receptacle;
 
-/**
- * Class Reliquary
- *
- * Responsibility: To contain an array of first-order objects
- *
- * @package Lore\Neptr\Receptacle
- */
-interface Coffer
+
+class Coffer implements CofferInterface
 {
 
+    private $chamber;
+
+    public function deposit(object $object)
+    {
+        $this->chamber[get_class($object)] = $object;
+    }
+
+    public function expose(string $instruction)
+    {
+        return $this->chamber[$instruction];
+    }
 }

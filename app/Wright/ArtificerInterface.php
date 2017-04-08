@@ -3,6 +3,9 @@
 
 namespace Lore\Neptr\Wright;
 
+use Lore\Neptr\Receptacle\CofferInterface;
+use Lore\Neptr\Tome\CompendiumInterface;
+
 
 /**
  * Class ArtificerInterface
@@ -14,6 +17,6 @@ namespace Lore\Neptr\Wright;
  */
 interface ArtificerInterface
 {
-    public function assemble();
+    public function assemble(CompendiumInterface $compendium, CofferInterface $coffer);
     public function dissemble();
 }

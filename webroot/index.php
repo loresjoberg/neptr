@@ -1,52 +1,27 @@
 <?php
 
-use Lore\Neptr\Config\AppPath;
-use Lore\Neptr\Model\Core\ClassFinder;
-use Lore\Neptr\Model\Core\DataMap;
-use Lore\Neptr\Model\Core\EntityFactory;
-use Lore\Neptr\Model\Curator\UserCurator;
-use Lore\Neptr\Model\DataType\Apothecary\ApothecaryConcrete;
-use Lore\Neptr\Model\DataType\Apothecary\Formula;
-use Lore\Neptr\Model\DataType\Apothecary\Vessel;
-use Lore\Neptr\Model\DataType\Apothecary\Reliquary;
+
+use Lore\Neptr\Tome\UserCompendium;
+use Lore\Neptr\Tome\UserFormulary;
+use Lore\Neptr\Tome\UserGrimoire;
+use Lore\Neptr\Wright\Apothecary;
+use Lore\Neptr\Wright\Curator;
 
 require_once '../autoloader.php';
 require_once '../vendor/autoload.php';
 
-$appPaths = new AppPath(dirname(__DIR__) . '/app');
 $db = new PDO('mysql:dbname=neptr;host=localhost', 'neptr', 'neptr');
 
-$classFinder = new ClassFinder('\Lore\\Neptr', $appPaths->classPath());
-
-
-$curator = new UserCurator($db);
+$grimoire = new UserGrimoire();
+$curator = new Curator($grimoire, $db);
 $reliquary = $curator->exhume(1);
 
-function (Reliquary $components) { return $components->choose('name'); };
+$formulary = new UserFormulary();
+$apothecary = new Apothecary();
+$coffer = $apothecary->mix($formulary, $reliquary);
 
-$formula = new Formula(
-    function (Reliquary $components)
-    {
-        return $components->choose('name');
-    }
-);
+$compendium = new UserCompendium();
+$artificer = new Artificer($compendium, $coffer);
+$user = $artificer->assemble();
 
-$vessel = new Vessel($classFinder->fullClassName('SimpleName'));
-
-$apothecary = new ApothecaryConcrete($vessel, $reliquary);
-
-$simpleName = $apothecary->concoct($formula);
-
-print_r($simpleName);
-exit;
-
-///
-$dataMap = new DataMap();
-$factory = new EntityFactory($db, $dataMap);
-$post = $factory->assemblePost(1);
-
-$loader = new Twig_Loader_Filesystem($appPaths->templatePath());
-$twig = new Twig_Environment($loader);
-
-$template = $twig->load('index.html');
-echo $template->render($post->flatten());
+$user->printContents();

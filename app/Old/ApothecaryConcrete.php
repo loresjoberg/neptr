@@ -8,7 +8,7 @@ use Lore\Neptr\Model\Formulary\Formulary;
  * Class ApothecaryConcrete
  *
  * Responsibility: Instantiate first-order objects with data from
- * a Reliquary according to the instructions in a Formulary.
+ * a Reliquary according to the instructions in a FormularyInterface.
  *
  * @package Lore\Neptr\Model\DataType\ApothecaryConcrete
  */

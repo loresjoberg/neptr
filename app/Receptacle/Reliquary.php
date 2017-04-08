@@ -3,14 +3,17 @@
 
 namespace Lore\Neptr\Receptacle;
 
+use Closure;
 
-/**
- * Class Reliquary
- *
- * Responsibility: To contain an array of data created by a CuratorInterface
- *
- * @package Lore\Neptr\Receptacle
- */
-interface Reliquary
+class Reliquary implements ReliquaryInterface
 {
+    protected $chamber;
+
+    public function __construct(array $array) {
+        $this->chamber = $array;
+    }
+
+    public function expose($vessel, Closure $rubric) {
+        return new $vessel($rubric());
+    }
 }

@@ -3,7 +3,7 @@
 
 namespace Lore\Neptr\Wright;
 
-use Lore\Neptr\Receptacle\Reliquary;
+use Lore\Neptr\Receptacle\ReliquaryInterface;
 
 /**
  * Interface CuratorInterface
@@ -14,6 +14,6 @@ use Lore\Neptr\Receptacle\Reliquary;
  */
 interface CuratorInterface
 {
-   public function exhume($identifier) : Reliquary;
-   public function inhume(Reliquary $reliquary);
+   public function exhume($identifier) : ReliquaryInterface;
+   public function inhume(ReliquaryInterface $reliquary);
 }
