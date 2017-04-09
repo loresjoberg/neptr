@@ -1,44 +1,48 @@
 <?php
 
 
-namespace Lore\Neptr\Tome;
+namespace Lore\Neptr\Artisan;
 
 
-use Lore\Neptr\Receptacle\ReceptacleInterface;
-
-class UserCompendium implements TomeInterface
+class UserArtificer implements ArtisanInterface
 {
 
-    private $codex = [
-        'User' => [
-            'PersonalInfo' => [
-                'FullName',
-                'EmailAddress'
-            ],
-            'SystemInfo' => [
-                'Login' => [
-                    'UserName',
-                    'Password'
-                ],
-                [
-                    'Identifier',
-                    'Role'
-                ]
-            ]
-        ]
-    ];
+    private $coffer;
 
-    private $coffer
-
-    public function devise(ReceptacleInterface $coffer) : object
+    public function __construct($coffer)
     {
         $this->coffer = $coffer;
-        return $this->assemble($this->codex);
+    }
+
+    public function craft()
+    {
+        return $this->assemble(
+
+            $codex = [
+                'User' => [
+                    'PersonalInfo' => [
+                        'FullName',
+                        'EmailAddress'
+                    ],
+                    'SystemInfo' => [
+                        'Login' => [
+                            'UserName',
+                            'Password'
+                        ],
+                        [
+                            'Identifier',
+                            'Role'
+                        ]
+                    ]
+                ]
+            ]
+
+        );
     }
 
     /**
      * @param $instructions
-     * @return array
+     * @return object
      */
     private function assemble($instructions): object
     {
@@ -51,10 +55,16 @@ class UserCompendium implements TomeInterface
                 $entity[] = new $label(...$parameters);
             }
 
-            $entity[] = new $requisite($this->coffer->expose($requisite));
+            $entity[] = new $requisite($this->coffer[$label]);
         }
 
         return $entity[0];
+    }
+
+
+    public function cleave()
+    {
+        // TODO: Implement cleave() method.
     }
 
     /*
@@ -70,4 +80,6 @@ class UserCompendium implements TomeInterface
      * Iteration 1.1b -- $parameters = [ PersonalInfoObject(FullNameObject, EmailAddressObject, SystemInfoObject(IdentifierObject, RoleObject) ];, $entity = User(...$parameters);
      *
      */
+
+
 }

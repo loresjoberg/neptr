@@ -1,13 +1,13 @@
 <?php
 
 
-namespace Lore\Neptr\Tome;
+namespace Lore\Neptr\Artisan;
 
 
 use Lore\Neptr\Receptacle\ReceptacleInterface;
 
 /**
- * Interface TomeInterface
+ * Interface ArtisanInterface
  *
  * Responsibility: Pass stored rubrics to Receptacle and return created object;
  *
@@ -15,13 +15,16 @@ use Lore\Neptr\Receptacle\ReceptacleInterface;
  * Tomes vary by state and object, meaning each object will require three tomes,
  * one for each step of creation.
  *
- * @package Lore\Neptr\Tome
+ * @package Lore\Neptr\Artisan
  */
-interface TomeInterface
+interface ArtisanInterface
 {
     /**
-     * @param ReceptacleInterface $receptacle
      * @return object
+     * @internal param null $identifier
+     * @internal param ReceptacleInterface $receptacle
      */
-    public function devise(ReceptacleInterface $receptacle) : object;
+    public function craft();
+    public function cleave();
+
 }
