@@ -4,18 +4,18 @@
 namespace Lore\Neptr\Receptacle;
 
 
-class Coffer implements CofferInterface
+class Coffer implements ReceptacleInterface
 {
 
     private $chamber;
 
-    public function deposit(object $object)
+    public function deposit($object) : void
     {
         $this->chamber[get_class($object)] = $object;
     }
 
-    public function expose(string $instruction)
+    public function expose($rubric) : object
     {
-        return $this->chamber[$instruction];
+        return $this->chamber[$rubric];
     }
 }

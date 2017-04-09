@@ -4,23 +4,17 @@
 namespace Lore\Neptr\Tome;
 
 
-use Exception;
-use PDO;
+use Lore\Neptr\Receptacle\ReceptacleInterface;
+use Lore\Neptr\Receptacle\Reliquary;
 
-class UserGrimoire implements GrimoireInterface
+
+class UserGrimoire implements TomeInterface
 {
-    private $incantation = 'SELECT * FROM users WHERE id = ?';
+    private $codex = 'SELECT * FROM users WHERE id = ?';
 
 
-    public function incant(PDO $db, $identifier = null) : array
+    public function devise(ReceptacleInterface $ossuary) : object
     {
-        $query = $db->prepare($this->incantation);
-        $query->execute([$identifier]);
-
-        if ($query === false) {
-            throw new Exception('User not found');
-        }
-
-        return $query->fetch(PDO::FETCH_ASSOC);
+        return new Reliquary($ossuary->expose($this->codex));
     }
 }

@@ -5,11 +5,11 @@ namespace Lore\Neptr\Model\Entity;
 
 
 /**
- * Interface Entity
+ * Interface EntityInterface
  *
  * Rsponsibility to execute business logic upon the data in its Quiddity
  *
- * @package Lore\Neptr\Model\Entity
+ * @package Lore\Neptr\Model\EntityInterface
  */
 interface Entity
 {

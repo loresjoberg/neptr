@@ -4,27 +4,28 @@
 namespace Lore\Neptr\Tome;
 
 
-use Lore\Neptr\Model\DataType\Person\EmailAddress;
 use Lore\Neptr\Receptacle\Coffer;
-use Lore\Neptr\Receptacle\ReliquaryInterface;
+use Lore\Neptr\Receptacle\ReceptacleInterface;
 
-class UserFormulary implements FormularyInterface
+class UserFormulary implements TomeInterface
 {
-    private $formulas;
+    private $codex;
 
     public function __construct() {
-        $this->formulas = [
+        $this->codex = [
             'EmailAddress' => function () {
-
+                // Interesting that PhpStorm assumes the closure will
+                // act on the current object. Is it wrong or am I?
+                return $this->chamber('email');
             }
         ];
     }
 
-    public function formulate(ReliquaryInterface $reliquary)
+    public function devise(ReceptacleInterface $reliquary) : object
     {
         $coffer = new Coffer();
-        foreach ($this->formulas as $vessel => $rubric) {
-            $coffer->deposit($reliquary->expose($vessel, $rubric));
+        foreach ($this->codex as $vessel => $rubric) {
+            $coffer->deposit(new $vessel($reliquary->expose($rubric)));
         }
 
         return $coffer;

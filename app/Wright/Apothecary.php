@@ -4,20 +4,19 @@
 namespace Lore\Neptr\Wright;
 
 
-use Lore\Neptr\Receptacle\Coffer;
-use Lore\Neptr\Receptacle\CofferInterface;
-use Lore\Neptr\Receptacle\ReliquaryInterface;
-use Lore\Neptr\Tome\FormularyInterface;
+use Lore\Neptr\Receptacle\ReceptacleInterface;
+use Lore\Neptr\Tome\TomeInterface;
 
-class Apothecary implements ApothecaryInterface
+
+class Apothecary implements WrightInterface
 {
 
-    public function mix(FormularyInterface $formulary, ReliquaryInterface $reliquary): CofferInterface
+    public function compose(TomeInterface $formulary, ReceptacleInterface $reliquary) : object
     {
-        return new Coffer($formulary->formulate($reliquary));
+        return $formulary->devise($reliquary);
     }
 
-    public function unmix(CofferInterface $coffer)
+    public function decompose(object $object)
     {
         // TODO: Implement unmix() method.
     }

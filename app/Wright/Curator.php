@@ -2,32 +2,18 @@
 
 namespace Lore\Neptr\Wright;
 
-use Lore\Neptr\Receptacle\Reliquary;
-use Lore\Neptr\Receptacle\ReliquaryInterface;
-use Lore\Neptr\Tome\GrimoireInterface;
-use PDO;
+use Lore\Neptr\Receptacle\ReceptacleInterface;
+use Lore\Neptr\Tome\TomeInterface;
 
-class Curator implements CuratorInterface
+class Curator implements WrightInterface
 {
 
-    private $db;
-    private $grimoire;
-
-    /**
-     * @param PDO $db
-     */
-    public function __construct(GrimoireInterface $grimoire, PDO $db)
+    public function compose(TomeInterface $grimoire, ReceptacleInterface $db) : object
     {
-        $this->db = $db;
-        $this->grimoire = $grimoire;
+        return $grimoire->devise($db);
     }
 
-    public function exhume($identifier): ReliquaryInterface
-    {
-        return new Reliquary($this->grimoire->incant($this->db, $identifier));
-    }
-
-    public function inhume(ReliquaryInterface $reliquary)
+    public function decompose(object $object)
     {
         // TODO: Implement inhume() method.
     }
