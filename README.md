@@ -26,24 +26,12 @@ Also straightforward. Easier than you might think. Guard clauses help here.
 
 3.  Wrap All Primitives And Strings
 
-In PHP terms, a "primitive" is anything that isn't an object: scalars, arrays, and
-resources. I'm interpreting this to mean that a primitive value can't be assigned to a
-variable unless that variable is the property of an object. However, they can be
-used as arguments and comparators. I'm also excluding closures, although I'm not sure
-how I feel about that.
+Java has eight primitives: 'byte', 'short,' 'int,' and 'long' are roughly equivalent to PHP's
+int; 'float,' and 'double' are similar to PHP's 'float'; 'char' is a single-character string,
+and 'boolean' is essentially the same.
 
-Acceptable:
-
-    if ($importantObject->importantMethod() > 0) {
-        throw new Exception('The value is too damn high!'); // Using a string as an argument
-    }
-    
-Not acceptable:
-
-    $importantInteger = $importantObject->importantMethod(); // Assigning an integer to a variable
-    if ($importantInteger > $expectedInteger) {
-        $errorString = "The value is too damn high!" // Assigning a string to a variable
-    }
+So in PHP terms, this rule is "wrap all scalars." Arrays, closures and resources get off
+on a technicality, but I'm experimenting with using ArrayObjects instead of arrays.
 
 4. First Class Collections
 

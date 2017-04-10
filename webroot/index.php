@@ -11,8 +11,11 @@ require_once '../vendor/autoload.php';
 $db = new PDO('mysql:dbname=neptr;host=localhost', 'neptr', 'neptr');
 $userId = 1;
 
+// So we solved the problem by using ArrayObjects instead of arrays.
 $curator = new UserCurator($db, 1);
-$apothecary = new UserApothecary($curator->craft()); // Passes an associative array of scalars
-$artificer = new UserArtificer($apothecary->craft()); // Passes an associative array of Monocots
+$reliquary = $curator->craft();
+$apothecary = new UserApothecary($reliquary); // Passes an associative array of scalars
+$coffer = $apothecary->craft();
+$artificer = new UserArtificer($coffer); // Passes an associative array of Monocots
 $user = $artificer->craft();
 print_r($user);

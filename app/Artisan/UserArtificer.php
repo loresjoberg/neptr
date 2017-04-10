@@ -3,21 +3,23 @@
 
 namespace Lore\Neptr\Artisan;
 
+use Lore\Neptr\Container\Coffer;
+
 class UserArtificer implements ArtisanInterface
 {
 
-    private $coffer;
+    private $cabinet;
     private $assembleIteration = 0;
 
-    public function __construct($coffer)
+    public function __construct(Coffer $coffer)
     {
-        $this->coffer = $coffer;
+        $this->cabinet = $coffer;
     }
 
     public function craft()
     {
         print "<pre>";
-        $thing =  $this->assemble(
+        return $this->assemble(
 
             $codex = [
                 'Lore\\Neptr\\Entity\\User' => [
@@ -39,7 +41,7 @@ class UserArtificer implements ArtisanInterface
             ]
 
         );
-        print_r($thing);
+//        print_r($thing);
     }
 
     private function assemble($instructions)
@@ -130,7 +132,7 @@ class UserArtificer implements ArtisanInterface
 
     private function constructMonocot($requisite)
     {
-        return new $requisite($this->coffer[$requisite]);
+        return new $requisite($this->cabinet[$requisite]);
     }
 
     /**

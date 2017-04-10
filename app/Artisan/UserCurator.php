@@ -5,6 +5,7 @@ namespace Lore\Neptr\Artisan;
 
 
 use Exception;
+use Lore\Neptr\Container\Reliquary;
 use PDO;
 
 
@@ -18,7 +19,7 @@ class UserCurator implements ArtisanInterface
         $this->identifier = $identifier;
     }
 
-    public function craft()
+    public function craft() : Reliquary
     {
         $query = $this->db->prepare('SELECT * FROM users WHERE id = ?');
         $query->execute([$this->identifier]);
@@ -27,7 +28,7 @@ class UserCurator implements ArtisanInterface
             throw new Exception('User not found');
         }
 
-        return $query->fetch(PDO::FETCH_ASSOC);
+        return new Reliquary($query->fetch(PDO::FETCH_ASSOC));
     }
 
     public function cleave()

@@ -3,34 +3,39 @@
 
 namespace Lore\Neptr\Artisan;
 
+use Lore\Neptr\Container\Coffer;
+use Lore\Neptr\Container\Reliquary;
+
 class UserApothecary
 {
-    private $reliquary;
+    private $cabinet;
 
-    public function __construct($reliquary) {
-        $this->reliquary = $reliquary;
+    public function __construct(Reliquary $reliquary)
+    {
+        $this->cabinet = $reliquary;
     }
 
-    public function craft()
+    public function craft(): Coffer
     {
         // This could be a loop over the $reliquary, would
         // that simplify things or complicate them?
         $coffer['Lore\\Neptr\\Monocot\\FullName'] = $this->craftFullName();
         $coffer['Lore\\Neptr\\Monocot\\EmailAddress'] = $this->craftFromKey('email');
-        $coffer['Lore\\Neptr\\Monocot\\Identifier'] =  $this->craftFromKey('id');
-        $coffer['Lore\\Neptr\\Monocot\\Role'] =  $this->craftFromKey('role');
-        $coffer['Lore\\Neptr\\Monocot\\Username'] =  $this->craftFromKey('login');
-        $coffer['Lore\\Neptr\\Monocot\\Password'] =  $this->craftFromKey('passwd');
-        return $coffer;
-
+        $coffer['Lore\\Neptr\\Monocot\\Identifier'] = $this->craftFromKey('id');
+        $coffer['Lore\\Neptr\\Monocot\\Role'] = $this->craftFromKey('role');
+        $coffer['Lore\\Neptr\\Monocot\\Username'] = $this->craftFromKey('login');
+        $coffer['Lore\\Neptr\\Monocot\\Password'] = $this->craftFromKey('passwd');
+        return new Coffer($coffer);
     }
 
-    private function craftFromKey($key) {
-        return $this->reliquary[$key];
+    private function craftFromKey(string $key) : string
+    {
+        return $this->cabinet[$key];
     }
 
-    private function craftFullName() {
-        return $this->reliquary['first_name'] . ' ' . $this->reliquary['last_name'];
+    private function craftFullName() : string
+    {
+        return $this->cabinet['first_name'] . ' ' . $this->cabinet['last_name'];
     }
 
     public function cleave()
