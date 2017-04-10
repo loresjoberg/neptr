@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Lore\Neptr\Model\DataType;
+namespace Lore\Neptr\Monocot;
 
+use Lore\Neptr\Core\ObjectFlattener;
 
-use Lore\Neptr\Model\Core\ObjectFlattener;
 
 /**
  * Class Identity

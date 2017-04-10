@@ -1,14 +1,12 @@
 <?php
 
 
-namespace Lore\Neptr\Model\DataType;
-
+namespace Lore\Neptr\Entity;
 
 use DateTime;
-use Lore\Neptr\Model\Core\ObjectFlattener;
-use Lore\Neptr\Model\Entity\User;
+use Lore\Neptr\Core\ObjectFlattener;
 
-class PublicationData
+class PublicationData extends Entity
 {
     use ObjectFlattener;
 

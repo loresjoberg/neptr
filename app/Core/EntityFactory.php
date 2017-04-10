@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Lore\Neptr\Model\Core;
+namespace Lore\Neptr\Core;
 
 
 use Lore\Neptr\Model\Curator\PostCurator;

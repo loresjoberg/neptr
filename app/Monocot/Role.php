@@ -1,10 +1,11 @@
 <?php
 
 
-namespace Lore\Neptr\Model\DataType\Person;
+namespace Lore\Neptr\Monocot;
 
 
-use Lore\Neptr\Model\Core\ObjectFlattener;
+
+use Lore\Neptr\Core\ObjectFlattener;
 
 class Role
 {

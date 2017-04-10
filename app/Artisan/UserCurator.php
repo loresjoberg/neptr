@@ -18,7 +18,7 @@ class UserCurator implements ArtisanInterface
         $this->identifier = $identifier;
     }
 
-    public function craft() : array
+    public function craft()
     {
         $query = $this->db->prepare('SELECT * FROM users WHERE id = ?');
         $query->execute([$this->identifier]);

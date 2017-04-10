@@ -1,12 +1,10 @@
 <?php
 
+namespace Lore\Neptr\Entity;
 
-namespace Lore\Neptr\Model\DataType;
+use Lore\Neptr\Core\ObjectFlattener;
 
-
-use Lore\Neptr\Model\Core\ObjectFlattener;
-
-class Content
+class Content extends Entity
 {
     use ObjectFlattener;
 

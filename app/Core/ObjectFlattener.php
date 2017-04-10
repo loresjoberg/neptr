@@ -1,6 +1,6 @@
 <?php
 
-namespace Lore\Neptr\Model\Core;
+namespace Lore\Neptr\Core;
 
 use Exception;
 

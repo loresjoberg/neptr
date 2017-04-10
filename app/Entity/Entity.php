@@ -1,17 +1,12 @@
 <?php
 
 
-namespace Lore\Neptr\Model\Entity;
+namespace Lore\Neptr\Entity;
 
 
-/**
- * Interface EntityInterface
- *
- * Rsponsibility to execute business logic upon the data in its Quiddity
- *
- * @package Lore\Neptr\Model\EntityInterface
- */
-interface Entity
+use Lore\Neptr\Core\ObjectFlattener;
+
+class Entity
 {
-
+    use ObjectFlattener;
 }

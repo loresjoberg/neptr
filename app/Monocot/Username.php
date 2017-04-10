@@ -4,6 +4,7 @@
 namespace Lore\Neptr\Monocot;
 
 
-interface Vessel
+class Username extends Moniker
 {
+
 }

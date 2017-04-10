@@ -1,13 +1,13 @@
 <?php
 
 
-namespace Lore\Neptr\Tome;
+namespace Lore\Neptr\Artisan;
 
 class UserApothecary
 {
     private $reliquary;
 
-    public function __construct(array $reliquary) {
+    public function __construct($reliquary) {
         $this->reliquary = $reliquary;
     }
 
@@ -15,12 +15,12 @@ class UserApothecary
     {
         // This could be a loop over the $reliquary, would
         // that simplify things or complicate them?
-        $coffer['FullName'] = $this->craftFullName();
-        $coffer['EmailAddress'] = $this->craftFromKey('email');
-        $coffer['Identifier'] =  $this->craftFromKey('id');
-        $coffer['Role'] =  $this->craftFromKey('role');
-        $coffer['Username'] =  $this->craftFromKey('username');
-        $coffer['Password'] =  $this->craftFromKey('passwd');
+        $coffer['Lore\\Neptr\\Monocot\\FullName'] = $this->craftFullName();
+        $coffer['Lore\\Neptr\\Monocot\\EmailAddress'] = $this->craftFromKey('email');
+        $coffer['Lore\\Neptr\\Monocot\\Identifier'] =  $this->craftFromKey('id');
+        $coffer['Lore\\Neptr\\Monocot\\Role'] =  $this->craftFromKey('role');
+        $coffer['Lore\\Neptr\\Monocot\\Username'] =  $this->craftFromKey('login');
+        $coffer['Lore\\Neptr\\Monocot\\Password'] =  $this->craftFromKey('passwd');
         return $coffer;
 
     }

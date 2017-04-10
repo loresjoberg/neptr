@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Lore\Neptr\Model\DataType;
+namespace Lore\Neptr\Monocot;
 
-use Lore\Neptr\Model\Core\Validator;
+use Lore\Neptr\Core\Validator;
 
 
 /**
