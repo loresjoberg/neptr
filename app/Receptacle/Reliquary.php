@@ -1,6 +1,6 @@
 <?php
 
-namespace Lore\Neptr\Container;
+namespace Lore\Neptr\Receptacle;
 
 use ArrayObject;
 

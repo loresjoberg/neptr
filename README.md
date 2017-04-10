@@ -31,21 +31,23 @@ int; 'float,' and 'double' are similar to PHP's 'float'; 'char' is a single-char
 and 'boolean' is essentially the same.
 
 So in PHP terms, this rule is "wrap all scalars." Arrays, closures and resources get off
-on a technicality, but I'm experimenting with using ArrayObjects instead of arrays.
+on a technicality, but I'm experimenting with using ArrayObjects instead of arrays. I'm also
+letting scalars be bare when passed as paramenters -- because you have to get the scalars
+into the wrappers somehow -- but scalars can't be assigned to variables unless those variables
+are properties of the wrapping class. However, scalars can be assigned as keys and values of 
+arrays and ArrayObjects.
 
 4. First Class Collections
 
 In the original: "Any class that contains a collection should contain no other member variables." 
 I'm not familiar enough with Java to know *precisely* what that means, but in PHP terms
-I'm taking it to mean that an object that has an array (of any sort) as one of its 
+I'm taking it to mean that an object that has an array or ArrayObject (of any sort) as one of its 
 properties can't have any other properties.
 
 5. No more than one arrow per line, not counting `$this->`
 
 This is originally "one dot per line," but PHP uses arrows, and accessing a property
-requires an arrow, so this rule amounts to the same thing. I don't think this was
-intended to refer to multiple dots/arrows across different statements, e.g.
-`$this->translator->translate($this->talker->talk())`.
+requires an arrow, so this rule amounts to the same thing.
 
 6. Don’t Abbreviate
 
@@ -78,14 +80,14 @@ I'm using PSR-4 namespacing, so that also means no more than 10 files per direct
 8. No Classes With More Than Two Instance Variables
 
 In PHP terms, an "instance variable" is a non-static propery. So, two non-static properties at most.
-And only one property of any sort if that property is an array (Rule 4). This leads to an
+And only one property of any sort if that property is an array or ArrayObject (Rule 4). This leads to an
 interesting potential cheat: You could easily create a single property called $var that contains
 any number of variables, which means that instead of saying `$this->property` you could say
 `$this->var['property']` and have any number of virtual properties. This is obviously against
 the spirit of the exercise, like doing "pull-ups" while standing on a chair.
 
 At the same time, the original Object Calisthenics exercise has an example that uses a list of
-string, in essence an indexed array, so the intent clearly isn't to ban arrays entirely or to
+strings, in essence an indexed array, so the intent clearly isn't to ban arrays entirely or to
 make them always contain objects. So here's my interpretation: An object can contain a single
 array of any sort, including multidimensional arrays. However, the arrays have to be arbitrary,
 in the sense that the object can't expect specific keys. So this is against the rules...
