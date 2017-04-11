@@ -3,17 +3,10 @@
 
 namespace Lore\Neptr\Entity;
 
-use Lore\Neptr\Core\ObjectFlattener;
-
-class Access
+class Access extends Entity
 {
 
-    use ObjectFlattener;
-
-
     private $role;
-
-
     private $loginData;
 
 
@@ -22,6 +15,5 @@ class Access
         $this->role = $role;
         $this->loginData = $loginData;
     }
-
 
 }

@@ -4,11 +4,9 @@
 namespace Lore\Neptr\Entity;
 
 use DateTime;
-use Lore\Neptr\Core\ObjectFlattener;
 
 class PublicationData extends Entity
 {
-    use ObjectFlattener;
 
     private $creator;
     private $creationDate;

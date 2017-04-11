@@ -25,6 +25,7 @@ class Password
     /**
      * Password constructor.
      * @param string $clearText
+     * @throws \Exception
      */
     public function __construct($clearText)
     {

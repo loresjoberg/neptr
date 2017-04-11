@@ -8,7 +8,7 @@ use Lore\Neptr\Core\ObjectFlattener;
 use Lore\Neptr\Core\Validator;
 use Mockery\Exception;
 
-class SimpleName
+class SimpleName extends Str
 {
     protected $name;
 
@@ -20,7 +20,7 @@ class SimpleName
             throw new Exception('Invalid name');
         }
 
-        $this->name = $name;
+        parent::__construct($name);
     }
 
     private function validateName($name) {

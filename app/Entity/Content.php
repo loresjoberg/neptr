@@ -2,11 +2,9 @@
 
 namespace Lore\Neptr\Entity;
 
-use Lore\Neptr\Core\ObjectFlattener;
 
 class Content extends Entity
 {
-    use ObjectFlattener;
 
     private $title;
     private $body;

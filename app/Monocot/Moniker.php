@@ -16,21 +16,16 @@ use Lore\Neptr\Core\Validator;
  *
  * @package Lore\Neptr\Model\DataType
  */
-class Moniker
+class Moniker extends Str
 {
-    /**
-     * @var string
-     */
-    private $moniker;
-
 
     public function __construct($moniker)
     {
         if (!$this->validateMoniker($moniker)) {
             throw new \Exception('Invalid Moniker.');
         }
-        $this->moniker = (string) $moniker;
 
+        parent::__construct($moniker);
     }
 
     private function validateMoniker($moniker) {

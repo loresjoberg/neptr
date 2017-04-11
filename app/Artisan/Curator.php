@@ -19,8 +19,8 @@ abstract class Curator
 
     public function exhume(PDO $db): Reliquary
     {
-        return new Reliquary($this->disinter($db));
+        return new Reliquary($this->fetch($db));
     }
 
-    abstract protected function disinter(PDO $db);
+    abstract protected function fetch(PDO $db);
 }

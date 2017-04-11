@@ -12,7 +12,7 @@ use PDO;
 class UserCurator extends Curator
 {
 
-    protected function disinter(PDO $db) : array
+    protected function fetch(PDO $db) : array
     {
         $query = $db->prepare('SELECT * FROM users WHERE id = ?');
         $query->execute([$this->identifier]);

@@ -13,7 +13,7 @@ class Validator
     // that are simple strings or can be typecast verbatim
     // as simple strings (i.e. ints and floats).
     //
-    // Note that a multi-line string is not a simple string.
+    // Note that a multi-line string is not a simple string, nor is an empty string.
     static function isSimpleStringish($value) {
 
         if (!self::isStringEquivalent($value)) {
@@ -59,6 +59,18 @@ class Validator
         }
 
         if (!preg_match("/^[_a-zA-Z][_a-zA-Z0-9]*$/", $value)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    static function isIdentifier($value) {
+        if (!self::isStringEquivalent($value)) {
+            return false;
+        }
+
+        if (!preg_match("#^[a-z0-9_-:/]*$#", $value)) {
             return false;
         }
 

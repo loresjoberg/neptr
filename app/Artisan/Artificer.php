@@ -5,6 +5,7 @@ namespace Lore\Neptr\Artisan;
 
 
 use Lore\Neptr\Config\Config;
+use Lore\Neptr\Entity\Entity;
 use Lore\Neptr\Receptacle\Coffer;
 
 abstract class Artificer
@@ -12,18 +13,18 @@ abstract class Artificer
 
     protected $codex;
 
-    public function craft(Coffer $coffer)
+    public function craft(Coffer $coffer) : Entity
     {
-        $pod = $this->assemble($coffer, $this->codex);
+        $pod = $this->constructCompoundObject($coffer, $this->codex);
         return $pod[0];
     }
 
-    protected function assemble(Coffer $coffer, $sheaf)
+    protected function constructCompoundObject(Coffer $coffer, $sheaf)
     {
         $entity = [];
 
         foreach ($sheaf as $label => $requisite) {
-            $entity[] = $this->fabricate($coffer, $requisite, $label);
+            $entity[] = $this->constructObject($coffer, $requisite, Config::ENTITY_PREFIX . $label);
         }
 
         return $entity;
@@ -35,20 +36,15 @@ abstract class Artificer
      * @param $label
      * @return mixed
      */
-    protected function fabricate(Coffer $coffer, $requisite, $label)
+    protected function constructObject(Coffer $coffer, $requisite, $label)
     {
 
         if (is_array($requisite)) {
-            return $this->constructEntity($coffer, $requisite, Config::ENTITY_PREFIX . $label);
+            $parameters = $this->constructCompoundObject($coffer, $requisite);
+            return new $label(...$parameters);
         }
 
         return $this->constructMonocot($coffer, Config::MONOCOT_PREFIX . $requisite);
-    }
-
-    protected function constructEntity(Coffer $coffer, $requisite, $label)
-    {
-        $parameters = $this->assemble($coffer, $requisite);
-        return new $label(...$parameters);
     }
 
     protected function constructMonocot(Coffer $coffer, $requisite)
