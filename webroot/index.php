@@ -1,7 +1,7 @@
 <?php
 
 
-use Lore\Neptr\Artisan\UserApothecary;
+use Lore\Neptr\Artisan\UserAbstractApothecary;
 use Lore\Neptr\Artisan\UserArtificer;
 use Lore\Neptr\Artisan\UserCurator;
 
@@ -14,7 +14,7 @@ $userId = 1;
 // So we solved the problem by using ArrayObjects instead of arrays.
 $curator = new UserCurator(1);
 $reliquary = $curator->exhume($db);
-$apothecary = new UserApothecary(); // Passes an associative array of scalars
+$apothecary = new UserAbstractApothecary(); // Passes an associative array of scalars
 $coffer = $apothecary->concoct($reliquary);
 $artificer = new UserArtificer(); // Passes an associative array of Monocots
 $user = $artificer->craft($coffer);

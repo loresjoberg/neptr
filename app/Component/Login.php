@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Lore\Neptr\Entity;
+namespace Lore\Neptr\Component;
 
-class Login extends Entity
+class Login extends Component
 {
     private $username;
     private $password;

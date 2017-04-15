@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Lore\Neptr\Entity;
+namespace Lore\Neptr\Component;
 
-class Access extends Entity
+class Access extends Component
 {
 
     private $role;

@@ -5,17 +5,17 @@ namespace Lore\Neptr\Entity;
 
 use Lore\Neptr\Component\Component;
 
-class User extends Component
+class Post extends Component
 {
-    private $personalInfo;
-    private $systemInfo;
+    private $identifier;
+    private $quiddity;
 
     /**
      * User constructor.
      * @param $personalInfo
      * @param $systemInfo
      */
-    public function __construct(PersonalInfo $personalInfo, SystemInfo $systemInfo)
+    public function __construct(Identifier $identifier, Quiddity $quiddity)
     {
         $this->personalInfo = $personalInfo;
         $this->systemInfo = $systemInfo;

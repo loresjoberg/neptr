@@ -9,10 +9,15 @@ use Lore\Neptr\Receptacle\Reliquary;
 use PDO;
 
 
-class UserCurator extends Curator
+class UserCurator extends AbstractCurator
 {
 
-    protected function fetch(PDO $db) : array
+    /**
+     * @param PDO $db
+     * @return Reliquary
+     * @throws Exception
+     */
+    public function exhume(PDO $db): Reliquary
     {
         $query = $db->prepare('SELECT * FROM users WHERE id = ?');
         $query->execute([$this->identifier]);
@@ -21,7 +26,14 @@ class UserCurator extends Curator
             throw new Exception('User not found');
         }
 
-        return $query->fetch(PDO::FETCH_ASSOC);
+        return new Reliquary($query->fetch(PDO::FETCH_ASSOC));
     }
 
+    /**
+     * @param Reliquary $reliquary
+     */
+    public function inhume(Reliquary $reliquary): void
+    {
+        // TODO: Implement inhume() method.
+    }
 }

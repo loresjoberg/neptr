@@ -70,7 +70,7 @@ class Validator
             return false;
         }
 
-        if (!preg_match("#^[a-z0-9_-:/]*$#", $value)) {
+        if (!preg_match("#^[a-z0-9_:/-]*$#", $value)) {
             return false;
         }
 

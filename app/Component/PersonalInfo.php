@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Lore\Neptr\Entity;
+namespace Lore\Neptr\Component;
 
 
-class PersonalInfo extends Entity
+class PersonalInfo extends Component
 {
 
     private $name;

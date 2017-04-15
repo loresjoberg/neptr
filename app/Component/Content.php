@@ -1,9 +1,9 @@
 <?php
 
-namespace Lore\Neptr\Entity;
+namespace Lore\Neptr\Component;
 
 
-class Content extends Entity
+class Content extends Component
 {
 
     private $title;

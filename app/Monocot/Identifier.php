@@ -7,12 +7,20 @@ namespace Lore\Neptr\Monocot;
 use Exception;
 use Lore\Neptr\Core\Validator;
 
-class Identifier extends Str
+/**
+ * Class Identifier
+ *
+ * The difference between an Entity and other types of Components is the
+ * presence of an Identifier.
+ *
+ * @package Lore\Neptr\Monocot
+ */
+class Identifier extends StringObject
 {
-    public function __construct($str)
+    public function __construct($string)
     {
-        $str = $this->filter($str);
-        parent::__construct($str);
+        $string = $this->filter($string);
+        parent::__construct($string);
     }
 
     // For our purposes, an Identifier must not be empty,
@@ -21,19 +29,23 @@ class Identifier extends Str
     // Identifiers cannot contain spaces, and are case-insensitive.
     // Uppercase characters will be converted to lowercase for storage,
     // so the compare() function should be used to test equality.
-    private function filter($str) {
+    private function filter($string) {
 
         // We validate before converting to lowercase to weed out
         // booleans and other non-stringish entities
-        if (!Validator::isStringEquivalent($str)) {
+        if (!Validator::isStringEquivalent($string)) {
             throw new Exception('Identifiers must be string-equivalents');
         }
 
-        $str = strtolower($str);
-        if (!Validator::isIdentifier($str));
+        $string = strtolower($string);
+        if (!Validator::isIdentifier($string)) {
+            throw new Exception('Not an identifier: ' . $string);
+        }
+
+        return $string;
     }
 
     public function compare($value) {
-        return ($this->str === (string) strtolower($value));
+        return ($this->string === (string) strtolower($value));
     }
 }

@@ -8,22 +8,20 @@ use Lore\Neptr\Core\ObjectFlattener;
 use Lore\Neptr\Core\Validator;
 use Mockery\Exception;
 
-class SimpleName extends Str
+class SimpleName extends StringObject
 {
-    protected $name;
+    protected $string;
 
-    use ObjectFlattener;
-
-    public function __construct($name)
+    public function __construct($string)
     {
-        if (!$this->validateName($name)) {
+        if (!$this->validateName($string)) {
             throw new Exception('Invalid name');
         }
 
-        parent::__construct($name);
+        parent::__construct($string);
     }
 
-    private function validateName($name) {
-        return Validator::isSimpleStringish($name);
+    private function validateName($string) {
+        return Validator::isSimpleStringish($string);
     }
 }

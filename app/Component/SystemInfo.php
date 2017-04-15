@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Lore\Neptr\Entity;
+namespace Lore\Neptr\Component;
 
-class SystemInfo extends Entity
+class SystemInfo extends Component
 {
 
     private $identifier;

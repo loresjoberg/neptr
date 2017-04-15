@@ -1,11 +1,12 @@
 <?php
 
 
-namespace Lore\Neptr\Entity;
+namespace Lore\Neptr\Component;
 
 use DateTime;
+use Lore\Neptr\Entity\User;
 
-class PublicationData extends Entity
+class PublicationData extends Component
 {
 
     private $creator;

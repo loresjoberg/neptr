@@ -32,5 +32,25 @@ makes it more difficult on the IDE.
 
 Once again, I'm confused by the rules about Collections. I think it comes down to not being clear
 on whether something like `$value = $collectionObject[$key]` is a getter or not. In Java, collections
-are premade objects, so using their "getter" isn't a design choice. Or is it? Let's look at some
-sample code from the essay (comments are mine):
+are premade objects, so using their "getter" isn't a design choice. Or is it?
+
+2017-04-12
+----------
+
+Okay, I've looked into Java Collections, and the rules are starting to make more sense. From what
+I understand, it's not *impossible* to extend a Collection, but it's rarely done. Similarly, it's
+*possible* to create a Collection of heterogeneous values, but typically the values (and the keys,
+if there are keys) are all the same type of object.
+
+In other words, I think the reason Bay doesn't worry about people using a collection as a collection
+of pseudo-properties is that, unlike it PHP, it would be kind of a pain in the ass. Also, for what it's
+worth, multidimensional arrays aren't as trivial to put together as they are in PHP.
+
+I'm not sure the best way to represent this in PHP, but I think the simplest rule of thumb would be that
+arrays cannot be a collection of heterogenous values. You could have an array of state abbreviations, or
+an associative array that maps state abbreviations to full names, but you can't have an array that contains
+the population, capital, date of founding, motto, and square mileage of a state, because those are all
+different concepts.
+
+Or, even simpler, "Don't use array as a substitute for object properties."
+

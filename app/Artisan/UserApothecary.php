@@ -3,14 +3,18 @@
 
 namespace Lore\Neptr\Artisan;
 
+use Lore\Neptr\Config\Config;
 use Lore\Neptr\Receptacle\Reliquary;
+use Lore\Neptr\Receptacle\Coffer;
 
-class UserApothecary extends Apothecary
+class UserApothecary extends AbstractApothecary
 {
 
-    protected function transmute(Reliquary $reliquary) : array
+    // Now here's where it gets weird. While this Apothecary can
+    // theoretically handle any Reliquary, in practice it needs
+    // a Reliquary with a specific set of keys.
+    public function concoct(Reliquary $reliquary): Coffer
     {
-
         $chamber = [
             'EmailAddress' => $reliquary['email'],
             'Identifier' => $reliquary['id'],
@@ -20,7 +24,7 @@ class UserApothecary extends Apothecary
             'FullName' => $this->craftFullName($reliquary)
         ];
 
-        return $chamber;
+        return new Coffer($this->prependKeys($chamber));
     }
 
     protected function craftFullName($reliquary): string
@@ -28,4 +32,19 @@ class UserApothecary extends Apothecary
         return $reliquary['first_name'] . ' ' . $reliquary['last_name'];
     }
 
+    // This will be in every Apothecary, how to handle that?
+    private function prependKeys($chamber) {
+
+        foreach ($chamber as $key => $value) {
+            $chamber[Config::MONOCOT_PREFIX . $key] = $value;
+            unset($chamber[$key]);
+        }
+
+        return $chamber;
+    }
+
+    public function decoct(Coffer $coffer): void
+    {
+        // TODO: Implement decoct() method.
+    }
 }

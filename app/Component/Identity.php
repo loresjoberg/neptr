@@ -1,18 +1,17 @@
 <?php
 
 
-namespace Lore\Neptr\Monocot;
+namespace Lore\Neptr\Component;
 
-use Lore\Neptr\Core\ObjectFlattener;
+use Lore\Neptr\Monocot\Moniker;
 
 
 /**
  * Class Identity
  * @package Lore\Neptr\Model\DataType
  */
-class Identity
+class Identity extends Component
 {
-    use ObjectFlattener;
 
     /**
      * @var int

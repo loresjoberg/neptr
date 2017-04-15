@@ -16,25 +16,25 @@ use Lore\Neptr\Core\Validator;
  *
  * @package Lore\Neptr\Model\DataType
  */
-class Moniker extends Str
+class Moniker extends StringObject
 {
 
-    public function __construct($moniker)
+    public function __construct($string)
     {
-        if (!$this->validateMoniker($moniker)) {
+        if (!$this->validateMoniker($string)) {
             throw new \Exception('Invalid Moniker.');
         }
 
-        parent::__construct($moniker);
+        parent::__construct($string);
     }
 
-    private function validateMoniker($moniker) {
+    private function validateMoniker($string) {
 
-        if (!Validator::isSimpleStringish($moniker)) {
+        if (!Validator::isSimpleStringish($string)) {
             return false;
         }
 
-        return preg_match('/^[0-9a-z][0-9a-z-]*$/',$moniker);
+        return preg_match('/^[0-9a-z][0-9a-z-]*$/',$string);
     }
 
 }

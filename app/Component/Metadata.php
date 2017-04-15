@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Lore\Neptr\Entity;
+namespace Lore\Neptr\Component;
 
-class Metadata extends Entity
+class Metadata extends Component
 {
 
     private $identity;
